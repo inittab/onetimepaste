@@ -9,7 +9,7 @@ In order to get OneTimePaste to work on your server you need:
 
 - PHP 5.1 or greater
 - php mcrypt support (i.e. php5-mcrypt in Debian based distros)
-- php MySQL support (i.e. php5-mysql in Debian based distros)
+- (optional) php MySQL support (i.e. php5-mysql in Debian based distros)
 
 Instalation
 -----------
@@ -26,6 +26,9 @@ Instalation
 
 Avoiding MySQL
 --------------
+
+There's a file based storage backend now (and it's the default).
+
 If you want to develop a different storage backend, follow this steps:
 - Create a file named BACKEND_NAME.php under storage/
 - Your file will must not output anything, but must contain the following
