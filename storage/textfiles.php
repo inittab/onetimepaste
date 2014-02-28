@@ -8,6 +8,7 @@ function save_msg($message='',$id='') {
 	global $textfiles_dir, $textfiles_prefix;
 	$filename = $textfiles_dir . "/" . $textfiles_prefix . $id;
 
+	umask(0077);
 	if ($fh = @fopen($filename, "x")) {
 		if (fwrite($fh, $message)) {
 			fclose($fh);
