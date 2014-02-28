@@ -5,8 +5,8 @@
 include_once "$backend.config.php";
 
 function save_msg($message='',$id='') {
-	global $textfiles_dir;
-	$filename = $textfiles_dir . "/" . $id;
+	global $textfiles_dir, $textfiles_prefix;
+	$filename = $textfiles_dir . "/" . $textfiles_prefix . $id;
 
 	if ($fh = @fopen($filename, "x")) {
 		if (fwrite($fh, $message)) {
@@ -19,8 +19,8 @@ function save_msg($message='',$id='') {
 }
 
 function read_msg($id='') {
-	global $textfiles_dir;
-	$filename = $textfiles_dir . "/" . $id;
+	global $textfiles_dir, $textfiles_prefix;
+	$filename = $textfiles_dir . "/" . $textfiles_prefix . $id;
 	
 	if ($fh = @fopen($filename, "r")) {
 		if ($message = fread($fh, filesize($filename))) {

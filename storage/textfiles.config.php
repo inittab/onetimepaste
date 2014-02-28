@@ -8,4 +8,5 @@
 * Warning, /tmp could be purged by your operating system (i.e. on a reboot)
 */
 $textfiles_dir="/tmp";
+$textfiles_prefix="otp_";
 ?>
