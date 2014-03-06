@@ -5,11 +5,13 @@ include_once "storage/$backend.php";
 $id=random_text('alnum', 20);
 $key=random_text('alnum', 10);
 
-include_once "encryption.php";
-$encrypted=bin2hex(mcrypt_generic($cipher, $_POST["message"]));
-mcrypt_generic_deinit($cipher);
+# check message not empty
+if (strlen(trim($_POST["message"])) > 0){
+	include "encryption.php";
+	$encrypted= encrypt_message($_POST["message"], $key);
+}
 
-if(save_msg($encrypted, $id)) {
+if($encrypted != "" && save_msg($encrypted, $id)) {
 	$recover_url=$base_url."/index.php?id=".$id.$key;
 	include "templates/save_head.php";
 	include "templates/save.php";

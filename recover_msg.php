@@ -10,8 +10,7 @@ if (isset($_GET["id"])) {
 
 		if($encrypted=read_msg($id)) {
 			include "encryption.php";
-			$message=mdecrypt_generic($cipher, hex2bin($encrypted));
-			mcrypt_generic_deinit($cipher);
+			$message=decrypt_message($encrypted,$key) ;
 		}
 	} 
 }
