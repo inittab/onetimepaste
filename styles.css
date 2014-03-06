@@ -13,7 +13,7 @@ form {width:90%; background-color:#96b6de; margin:0px auto 20px auto; border-rad
 textarea { width:100%; border:1px solid #4e7ab1; background-color:#f1f1f1; border-radius: 14px;padding:6px; resize:vertical; max-height:300px; min-height:150px;}
 input[type=submit] { cursor:pointer; position:relative;left:85%; background-color:#4e7ab1; width:120px; height:30px; border:0px; margin-top:10px; color:#ffffff; font-weight:bold; border-left:4px solid #ffffff; text-align:left;}
 input[type=submit]:hover { border-color:#4e7ab1; color:#4e7ab1; background-color:#ffffff; }
-pre { background-color:#f1f1f1; width:90%; margin:0px auto 0px auto; padding:10px; border-radius: 14px; height:100px; overflow:scroll;}
+pre { background-color:#f1f1f1; width:90%; margin:0px auto 0px auto; padding:10px; border-radius: 14px; height:100px; overflow:auto;}
 .normal { color:#4e7ab1; padding:10px; text-align:center;}
 .note { float:right; background-color:#f1f1f1; font-size:x-small; padding:5px; width:200px; text-align:center; border-radius: 14px; margin:5px 20px auto auto; box-shadow: #999 0 .35em .6em; }
 .onetp { color: #4e7ab1; font-weight: bold; }
