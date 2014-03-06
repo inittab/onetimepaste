@@ -10,6 +10,6 @@ $backend="textfiles";
 
 # days till an unread message is purged from the DB
 # remember to set a cronjob like
-# 0 * * * * YOUR_USER /usr/bin/curl https://1tp.es/cron.php
+# 0 * * * * YOUR_USER /usr/bin/curl https://YOUR_INSTALLATION_URL/cron.php
 $hours_expire=72;
 ?>

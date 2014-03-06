@@ -6,4 +6,4 @@
 <link href="styles.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
  <body>
-<h1>1tp.es</h1>
+ <h1><?php echo $_SERVER['HTTP_HOST']; ?></h1>
