@@ -35,7 +35,7 @@ if(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
 } elseif (isset($_GET["fileid"]) && strlen($_GET["fileid"]) > 0) {
 	include "recover_file.php";
 
-} elseif (isset($_POST["message"]) && strlen($_POST["message"]) > 0) {
+} elseif (isset($_POST["submitmsg"]) && isset($_POST["message"]) && strlen($_POST["message"]) > 0) {
 	# Check session to avoid multiple posts
 	ini_set("session.use_trans_sid",0); # Disallow sending php_session_id via request
 	session_start();
@@ -47,7 +47,7 @@ if(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
 		define('INCLUDED_FROM_INDEX', True);
 		include "save_msg.php";
 	}
-} elseif (isset($_FILES) && sizeof($_FILES) > 0) {
+} elseif (isset($_POST["submitfile"]) && isset($_FILES) && sizeof($_FILES) > 0) {
 	# Check session to avoid multiple posts
 	ini_set("session.use_trans_sid",0); # Disallow sending php_session_id via request
 	session_start();
