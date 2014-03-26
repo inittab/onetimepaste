@@ -24,9 +24,8 @@ Instalation
   name.
 - Profit!
 
-Avoiding MySQL
---------------
-
+Avoiding MySQL dependency
+-------------------------
 There's a file based storage backend now (and it's the default).
 
 If you want to develop a different storage backend, follow this steps:
@@ -35,3 +34,16 @@ If you want to develop a different storage backend, follow this steps:
   functions: read_msg, save_msg and purge_old. Just check the current ones for
   their behaviour.
 - Change $backend in config.php :-)
+
+Upgrading from versions prior to 2.0 using the MySQL storage backend
+--------------------------------------------------------------------
+The first releases of onetimepaste's MySQL backend had BLOB as the column type
+for message storage, since there was no file upload support.
+That column type (max 64kB) is not enough to hold files (unless very small).
+You SHOULD change the column type to (at least) MEDIUMBLOB, with a MySQL command
+like this:
+
+mysql> ALTER TABLE pastes CHANGE message message mediumblob NOT NULL;
+
+If you upgrade onetimepaste and don't change the column type, your file uploads
+will be lost!

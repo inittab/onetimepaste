@@ -16,5 +16,7 @@ $hours_expire=72;
 # max upload filesize (in megabytes)
 # check the value is smaller than php.ini's upload_max_filesize & post_max_size
 # set to 0 to remove the limit
+# NOTICE: see the warning in storage/mysql.sql on file sizes if you use
+# the MySQL storage backend
 $max_upload_size=5
 ?>
