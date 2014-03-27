@@ -22,7 +22,7 @@ if (isset($_GET["fileid"])) {
 				$filecontents = substr($filecontents, 0, $filesize);
 
 				header("Content-type: application/octet-stream");
-				header('Content-Disposition: attachment; filename="'.$filename.'"');
+				header('Content-Disposition: attachment; filename="'.urlencode($filename).'"');
 				print $filecontents;
 				exit();
 			}
