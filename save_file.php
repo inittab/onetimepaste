@@ -9,7 +9,7 @@ if(isset($_FILES) && sizeof($_FILES) > 0) {
 	if($max_upload_size > 0 && $_FILES['file']['size'] > $max_upload_size * 1024 * 1024) {
 		include "templates/file_too_large.php";
 	}
-	elseif(isset($_FILES['file']['error']) && $_FILES['file']['error'] == 0) {
+	elseif(isset($_FILES['file']['error']) && $_FILES['file']['error'] == 0 && strlen(trim($_FILES['file']['name'])) > 0) {
 		$id=random_text('alnum', 20);
 		$key=random_text('alnum', 10);
 		include "encryption.php";
