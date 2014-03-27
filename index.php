@@ -23,9 +23,11 @@ include "config.php";
 # Do not use cookies
 ini_set("session.use_cookies",0);
 ini_set("session.use_only_cookies",0);
+# Check all goes thru index.php
+define('INCLUDED_FROM_INDEX', True);
 
 # Do not include header when recovering files
-if (!isset($_GET["fileid"])) {
+if (!isset($_GET["fileid"]) || !strlen($_GET["fileid"]) > 0) {
 	include "templates/head.php";
 }
 
@@ -44,7 +46,6 @@ if(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
 	if (isset($_SESSION['count']) && $_SESSION['count'] > 1) {
 		include "templates/save_foot.php";
 	} else {
-		define('INCLUDED_FROM_INDEX', True);
 		include "save_msg.php";
 	}
 } elseif (isset($_POST["submitfile"]) && isset($_FILES) && sizeof($_FILES) > 0) {
@@ -56,7 +57,6 @@ if(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
 	if (isset($_SESSION['count']) && $_SESSION['count'] > 1) {
 		include "templates/save_foot.php";
 	} else {
-		define('INCLUDED_FROM_INDEX', True);
 		include "save_file.php";
 	}
 } else {

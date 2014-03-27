@@ -1,4 +1,6 @@
 <?php
+# Do not allow direct call of this php
+if(!defined('INCLUDED_FROM_INDEX')){ die(); }
 include_once "storage/$backend.php";
 
 # check 'fileid' is set in case this php is not called thru index.php
