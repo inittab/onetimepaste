@@ -51,7 +51,8 @@ if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off') {
 	} else {
 		include "save_msg.php";
 	}
-} elseif (isset($_POST["submitfile"]) && isset($_FILES) && sizeof($_FILES) > 0) {
+} elseif (isset($_POST["submitfile"]) && isset($_FILES) && sizeof($_FILES) > 0 &&
+        	strlen(trim($_FILES['file']['name'])) > 0 && $_FILES['file']['size'] > 0) {
 	# Check session to avoid multiple posts
 	ini_set("session.use_trans_sid",0); # Disallow sending php_session_id via request
 	session_start();
