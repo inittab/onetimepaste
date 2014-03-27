@@ -31,7 +31,10 @@ if (!isset($_GET["fileid"]) || !strlen($_GET["fileid"]) > 0) {
 	include "templates/head.php";
 }
 
-if(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
+# Running this software without https makes little sense
+if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off') {
+	include "templates/not_without_ssl.php";
+} elseif(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
 	include "recover_msg.php";
 
 } elseif (isset($_GET["fileid"]) && strlen($_GET["fileid"]) > 0) {
