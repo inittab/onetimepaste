@@ -1,5 +1,6 @@
-2014.03.26 -- Version 2.0.0
-	Add support for file upload
+2014.03.27 -- Version 2.0.0
+	Thanks Silvia Alvarez for a lot of testing and bug hunting!!
+	Add support for file upload. Thanks Dario Minnucci for his help
 	Change MySQL "messages" column definition to MEDIUMBLOB
 2014.03.06 -- Version 1.0.0
 	Initial Release. 

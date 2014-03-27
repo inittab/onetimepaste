@@ -1,6 +1,8 @@
 <?php
 # Site URL, you should REALLY run it under https
-$base_url="https://".$_SERVER['HTTP_HOST'].pathinfo($_SERVER['PHP_SELF'])['dirname'];
+$force_https=true;
+$base_protocol=(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on') ? "http://" : "https://";
+$base_url=$base_protocol.$_SERVER['HTTP_HOST'].pathinfo($_SERVER['PHP_SELF'])['dirname'];
 # you may want to override the auto-detected URL
 #$base_url="https://CHANGE_THIS_TO_YOUR_SITE_ADDRESS";
 

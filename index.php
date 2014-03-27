@@ -32,7 +32,7 @@ if (!isset($_GET["fileid"]) || !strlen($_GET["fileid"]) > 0) {
 }
 
 # Running this software without https makes little sense
-if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off') {
+if (isset($force_https) && $force_https == true && (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')) {
 	include "templates/not_without_ssl.php";
 } elseif(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
 	include "recover_msg.php";
