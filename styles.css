@@ -11,7 +11,7 @@ a:hover, a:visited:hover, a:active { text-decoration:none;}
 .boton:hover { text-decoration:underline;border-left:4px solid #4e7ab1;padding-left:7px;}
 form {width:90%; background-color:#96b6de; margin:0px auto 20px auto; border-radius: 14px; box-shadow: #999 0 .35em .6em; padding:20px;color:#ffffff;}
 textarea { width:100%; border:1px solid #4e7ab1; background-color:#f1f1f1; border-radius: 14px;padding:6px; resize:vertical; max-height:300px; min-height:150px;}
-input[type=submit] { cursor:pointer; position:relative;left:85%; background-color:#4e7ab1; width:120px; height:30px; border:0px; margin-top:10px; color:#ffffff; font-weight:bold; border-left:4px solid #ffffff; text-align:left;}
+input[type=submit] { cursor:pointer; position:relative;left:85%; background-color:#4e7ab1; width:120px; height:30px; border:0px; margin-top:10px; color:#ffffff; font-size:small; font-weight:bold; border-left:4px solid #ffffff; text-align:left;}
 input[type=submit]:hover { border-color:#4e7ab1; color:#4e7ab1; background-color:#ffffff; }
 pre { background-color:#f1f1f1; width:90%; margin:0px auto 0px auto; padding:10px; border-radius: 14px; height:100px; overflow:auto;}
 .normal { color:#4e7ab1; padding:10px; text-align:center;}
