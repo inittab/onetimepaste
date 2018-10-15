@@ -1,7 +1,12 @@
-Description and homepage
-------------------------
+Description
+-----------
 
-https://onetimepaste.org
+OneTimePaste is software that runs on a web server allowing you to send, securely, sensitive data that will be destroyed after it's been read.
+Its purpose is achieved in two steps:
+- Encrypting all traffic with you and your peer (by using https, and storing the message/file in encrypted form).
+- Destroying the message/file you leave as soon as your peer reads it.
+
+OneTimePaste permits sending usernames, passwords, short messages or files in a safer way than unencrypted mail, SMS, wassap,...
 
 Requirements
 ------------
