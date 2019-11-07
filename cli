@@ -1,0 +1,57 @@
+#!/usr/bin/python3
+
+import argparse
+import os
+import fileinput
+import urllib.request
+import urllib.parse
+import requests
+from requests_toolbelt.multipart.encoder import MultipartEncoder
+
+url="https://enviosecreto.es"
+
+def upload_message(mensaje):
+  print("Sending...")
+  data = urllib.parse.urlencode({'type': 'message', 'message': mensaje })
+  data = data.encode('ascii')
+  with urllib.request.urlopen(url + "/api.php", data) as f:
+    print(f.read().decode('utf-8'))
+
+def upload_file(fichero):
+  print("Sending...")
+  multipart_data = MultipartEncoder(
+    fields={
+            # a file upload field
+            'file': (fichero, open(fichero, 'rb'), 'application/octet-stream'),
+            # plain text fields
+            'type': 'file',
+           }
+    )
+  response = requests.post(url + "/api.php", data=multipart_data,
+     headers={'Content-Type': multipart_data.content_type})
+  print(response.text)
+
+##############
+
+parser = argparse.ArgumentParser(description='Send encrypted messages or files using ' + url)
+parser.add_argument("-t", "--text", help="Upload file as text message", action="store_true")
+# nargs=? permite que un parámetro posicional sea opcional
+parser.add_argument("message", metavar='message|FILE', nargs='?', help="Text message or file to upload. stdin if ommited")
+
+argumentos = parser.parse_args()
+
+if argumentos.message and os.path.isfile(argumentos.message) and not argumentos.text:
+  upload_file(argumentos.message)
+else:
+  mensaje=""
+  if argumentos.message and os.path.isfile(argumentos.message):
+    for linea in fileinput.input(files=argumentos.message):
+      mensaje+=linea
+  elif (argumentos.message and argumentos.message == "-") or not argumentos.message:
+    for linea in fileinput.input():
+      mensaje+=linea
+  else:
+    mensaje = argumentos.message
+
+  upload_message(mensaje)
+
