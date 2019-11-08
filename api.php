@@ -7,6 +7,11 @@ $id=random_text('alnum', 20);
 $key=random_text('alnum', 10);
 $encrypted="";
 
+if(!isset($_POST["cli_auth"]) || $_POST["cli_auth"] != $cli_auth) {
+	print "Not authorized";
+	exit;
+}
+
 if(isset($_POST["type"]) && $_POST["type"] == "message") {
 	# check message not empty
 	if (strlen(trim($_POST["message"])) > 0){
@@ -36,7 +41,6 @@ if(isset($_POST["type"]) && $_POST["type"] == "message") {
 	}
 }
 else {
-	# TODO
 	print "Error";
 }
 ?>

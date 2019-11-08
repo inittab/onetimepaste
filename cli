@@ -7,7 +7,10 @@ import fileinput
 import requests
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
+# Default settings should be changed ~/.onetimepasterc
+# TODO
 url="https://enviosecreto.es"
+cli_auth="canihazpastes?"
 
 def upload(tipo, contenido):
   print("Sending...")
@@ -18,6 +21,7 @@ def upload(tipo, contenido):
               'file': (contenido, open(contenido, 'rb'), 'application/octet-stream'),
               # plain text fields
               'type': tipo,
+              'cli_auth': cli_auth,
              }
       )
   elif tipo == "message":
@@ -25,6 +29,7 @@ def upload(tipo, contenido):
       fields={
               'message': contenido,
               'type': tipo,
+              'cli_auth': cli_auth,
              }
       )
   response = requests.post(url + "/api.php", data=multipart_data,

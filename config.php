@@ -21,4 +21,9 @@ $hours_expire=72;
 # NOTICE: see the warning in storage/mysql.sql on file sizes if you use
 # the MySQL storage backend
 $max_upload_size=5
+
+# cli_auth, password for command line client access
+# Leaving this empty (or with the default value) will allow anyone to (ab)use
+# your installation if you don't set other limits (i.e. in your webserver config)
+$cli_auth="canihazpastes?"
 ?>
