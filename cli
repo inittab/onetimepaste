@@ -1,32 +1,32 @@
 #!/usr/bin/python3
+## depends: python3-requests python3-requests-toolbelt
 
 import argparse
 import os
 import fileinput
-import urllib.request
-import urllib.parse
 import requests
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 url="https://enviosecreto.es"
 
-def upload_message(mensaje):
+def upload(tipo, contenido):
   print("Sending...")
-  data = urllib.parse.urlencode({'type': 'message', 'message': mensaje })
-  data = data.encode('ascii')
-  with urllib.request.urlopen(url + "/api.php", data) as f:
-    print(f.read().decode('utf-8'))
-
-def upload_file(fichero):
-  print("Sending...")
-  multipart_data = MultipartEncoder(
-    fields={
-            # a file upload field
-            'file': (fichero, open(fichero, 'rb'), 'application/octet-stream'),
-            # plain text fields
-            'type': 'file',
-           }
-    )
+  if tipo == "file":
+    multipart_data = MultipartEncoder(
+      fields={
+              # a file upload field
+              'file': (contenido, open(contenido, 'rb'), 'application/octet-stream'),
+              # plain text fields
+              'type': tipo,
+             }
+      )
+  elif tipo == "message":
+    multipart_data = MultipartEncoder(
+      fields={
+              'message': contenido,
+              'type': tipo,
+             }
+      )
   response = requests.post(url + "/api.php", data=multipart_data,
      headers={'Content-Type': multipart_data.content_type})
   print(response.text)
@@ -41,7 +41,7 @@ parser.add_argument("message", metavar='message|FILE', nargs='?', help="Text mes
 argumentos = parser.parse_args()
 
 if argumentos.message and os.path.isfile(argumentos.message) and not argumentos.text:
-  upload_file(argumentos.message)
+  upload("file", argumentos.message)
 else:
   mensaje=""
   if argumentos.message and os.path.isfile(argumentos.message):
@@ -53,5 +53,5 @@ else:
   else:
     mensaje = argumentos.message
 
-  upload_message(mensaje)
+  upload("message", mensaje)
 
