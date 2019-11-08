@@ -7,9 +7,7 @@ import fileinput
 import requests
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
-# Default settings should be changed ~/.onetimepasterc
-# TODO
-url="https://enviosecreto.es"
+url="https://DOMAIN/PATH"
 cli_auth="canihazpastes?"
 
 def upload(tipo, contenido):

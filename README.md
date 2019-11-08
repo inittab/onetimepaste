@@ -52,3 +52,10 @@ mysql> ALTER TABLE pastes CHANGE message message mediumblob NOT NULL;
 
 If you upgrade onetimepaste and don't change the column type, your file uploads
 will be lost!
+
+CLI
+---
+The "cli" file is a python script that allows posting text or files from the
+command line. Use it like any other *nix command. Just edit the URL and
+password (also in config.php) to use your onetimepaste installation. Copy or
+link it into your path with your preferred name.
