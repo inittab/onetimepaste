@@ -26,4 +26,9 @@ $max_upload_size=5;
 # Leaving this empty (or with the default value) will allow anyone to (ab)use
 # your installation if you don't set other limits (i.e. in your webserver config)
 $cli_auth="canihazpastes?";
+
+# Ask for confirmation before recovering messages/files
+# Prevents messages from being disclosed to whatsapp, outlook, gmail,...
+# link "checkers/previewers"
+$prompt2show=true;
 ?>

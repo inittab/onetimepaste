@@ -29,17 +29,28 @@ define('INCLUDED_FROM_INDEX', True);
 # Do not include header when recovering files
 if (!isset($_GET["fileid"]) || !strlen($_GET["fileid"]) > 0) {
 	include "templates/head.php";
+# ... unless we require view confirmation
+} else {
+	if (isset($prompt2show) && $prompt2show == true && (!isset($_GET['ok']) || $_GET['ok'] != 'ok')) {
+		include "templates/head.php";
+	}
 }
 
 # Running this software without https makes little sense
 if (isset($force_https) && $force_https == true && (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')) {
 	include "templates/not_without_ssl.php";
 } elseif(isset($_GET["id"]) && strlen($_GET["id"]) > 0) {
-	include "recover_msg.php";
-
+	if (isset($prompt2show) && $prompt2show == true && (!isset($_GET['ok']) || $_GET['ok'] != 'ok')) {
+		include "confirmation.php";
+	} else {
+		include "recover_msg.php";
+	}
 } elseif (isset($_GET["fileid"]) && strlen($_GET["fileid"]) > 0) {
-	include "recover_file.php";
-
+	if (isset($prompt2show) && $prompt2show == true && (!isset($_GET['ok']) || $_GET['ok'] != 'ok')) {
+		include "confirmation.php";
+	} else {
+		include "recover_file.php";
+	}
 } elseif (isset($_POST["submitmsg"]) && isset($_POST["message"]) && strlen($_POST["message"]) > 0) {
 	# Check session to avoid multiple posts
 	ini_set("session.use_trans_sid",0); # Disallow sending php_session_id via request
